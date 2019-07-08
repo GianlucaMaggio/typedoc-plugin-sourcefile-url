@@ -16,9 +16,9 @@ typedoc will automatically detect and load the plugin from `node_modules`.
 
 #### Simple Prefix
 
-    typedoc --sourcefile-url-prefix "https://www.your-repository.org/"
+    typedoc --sourcefile-link-prefix "https://www.your-repository.org/"
     
-The `--sourcefile-url-prefix` option will create URLs by prefixing the given parameter in front of each source file.
+The `--sourcefile-link-prefix` option will create URLs by prefixing the given parameter in front of each source file.
 
 *Defined in* `src/testfile.ts` will link to `https://www.your-repository.org/src/testfile.ts`.
 
@@ -29,7 +29,7 @@ Sometimes more complex URL rules may be required. For example when grouping docu
 
 Advanced mappings are described in a JSON file.
 
-    typedoc --sourcefile-url-map your-sourcefile-map.json
+    typedoc --sourcefile-link-map your-sourcefile-map.json
     
 The `your-sourcefile-map.json` structure is: 
 
@@ -49,8 +49,8 @@ The `your-sourcefile-map.json` structure is:
 
 There can be one or more mapping rules. For each *Defined in* only the first rule that matches is applied. In the above example the last rule would match all source files that did not start with `modules/module-one`. This compares to the *Simple Prefix* option.
 
-If you need to pass a custom string to indicate the line numeber in the url (defaults to `#L`), you can pass the `--sourcefile-url-lines-str` option.
+If you need to pass a custom string to indicate the line numeber in the url (defaults to `#L`), you can pass the `--sourcefile-link-lines-str` option.
 (Ignacio Carbajo)
 ---
 
-The options are mutually exclusive. It is not possible to use `--sourcefile-url-prefix` and `--sourcefile-url-map` at the same time.
+The options are mutually exclusive. It is not possible to use `--sourcefile-link-prefix` and `--sourcefile-link-map` at the same time.
