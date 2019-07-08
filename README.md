@@ -1,5 +1,7 @@
 [typedoc](https://github.com/TypeStrong/typedoc) plugin to set custom source file URL links.
 
+This package is based on a work of Gerard Delmàs and Ignacio Carbajo.
+
 typedoc prints a *Defined in* statement showing the source file and line for all definitions. For projects hosted on GitHub this statement will automatically link to the source file.
 
 This plugin allows to create links to files hosted on other platforms and sites like Bitbucket, GitLab or any custom site. It adds a `#L` anchor to the URL, linking to any specific line.
@@ -48,7 +50,7 @@ The `your-sourcefile-map.json` structure is:
 There can be one or more mapping rules. For each *Defined in* only the first rule that matches is applied. In the above example the last rule would match all source files that did not start with `modules/module-one`. This compares to the *Simple Prefix* option.
 
 If you need to pass a custom string to indicate the line numeber in the url (defaults to `#L`), you can pass the `--sourcefile-url-lines-str` option.
-
+(Ignacio Carbajo)
 ---
 
 The options are mutually exclusive. It is not possible to use `--sourcefile-url-prefix` and `--sourcefile-url-map` at the same time.
