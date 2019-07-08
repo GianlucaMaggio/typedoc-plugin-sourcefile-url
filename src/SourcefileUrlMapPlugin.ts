@@ -11,7 +11,7 @@ interface Mapping {
     replace: string
 }
 
-@Component({name: 'sourcefile-url'})
+@Component({name: 'sourcefile-link'})
 export class SourcefileUrlMapPlugin extends ConverterComponent {
 
     private mappings: Mapping[] | undefined
@@ -28,10 +28,10 @@ export class SourcefileUrlMapPlugin extends ConverterComponent {
     {
         // read options parameter
         const options: Options = this.application.options
-        const mapRelativePath = options.getValue('sourcefile-url-map')
-        const urlPrefix = options.getValue('sourcefile-url-prefix')
+        const mapRelativePath = options.getValue('sourcefile-link-map')
+        const urlPrefix = options.getValue('sourcefile-link-prefix')
 
-        this.linesStr = options.getValue('sourcefile-url-lines-str') || '#L'
+        this.linesStr = options.getValue('sourcefile-link-lines-str') || '#L'
 
         if ( (typeof mapRelativePath !== 'string') && (typeof urlPrefix !== 'string') ) {
             return
@@ -39,7 +39,7 @@ export class SourcefileUrlMapPlugin extends ConverterComponent {
 
         try {
             if ( (typeof mapRelativePath === 'string') && (typeof urlPrefix === 'string') ) {
-                throw new Error('use either --sourcefile-url-prefix or --sourcefile-url-map option')
+                throw new Error('use either --sourcefile-link-prefix or --sourcefile-link-map option')
             }
 
             if ( typeof mapRelativePath === 'string' ) {
@@ -58,7 +58,7 @@ export class SourcefileUrlMapPlugin extends ConverterComponent {
             })
         }
         catch ( e ) {
-            console.error('typedoc-plugin-sourcefile-url: ' + e.message)
+            console.error('typedoc-plugin-sourcefile-link: ' + e.message)
         }
     }
 
@@ -72,12 +72,12 @@ export class SourcefileUrlMapPlugin extends ConverterComponent {
             json = JSON.parse(FS.readFileSync(mapAbsolutePath, 'utf8'))
         }
         catch ( e ) {
-            throw new Error('error reading --sourcefile-url-map json file: ' + e.message)
+            throw new Error('error reading --sourcefile-link-map json file: ' + e.message)
         }
 
         // validate json
         if ( !(json instanceof Array) ) {
-            throw new Error('--sourcefile-url-map json file has to have Array as root element')
+            throw new Error('--sourcefile-link-map json file has to have Array as root element')
         }
 
         this.mappings = []
@@ -91,7 +91,7 @@ export class SourcefileUrlMapPlugin extends ConverterComponent {
                     regExp = new RegExp(mappingJson['pattern'])
                 }
                 catch ( e ) {
-                    throw new Error('error reading --sourcefile-url-map: ' + e.message)
+                    throw new Error('error reading --sourcefile-link-map: ' + e.message)
                 }
 
                 this.mappings.push({
@@ -100,7 +100,7 @@ export class SourcefileUrlMapPlugin extends ConverterComponent {
                 })
             }
             else {
-                throw new Error('--sourcefile-url-map json file syntax has to be: [{"pattern": "REGEX PATTERN STRING WITHOUT ENCLOSING SLASHES", replace: "STRING"}, ETC.]')
+                throw new Error('--sourcefile-link-map json file syntax has to be: [{"pattern": "REGEX PATTERN STRING WITHOUT ENCLOSING SLASHES", replace: "STRING"}, ETC.]')
             }
         }
     }

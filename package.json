@@ -1,7 +1,7 @@
 {
   "author": "Gianluca Maggio",
   "name": "typedoc-plugin-sourcefile-link",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "typedoc plugin to set custom source file URL links",
   "homepage": "https://github.com/GianlucaMaggio/typedoc-plugin-sourcefile-url",
   "bugs": "https://github.com/GianlucaMaggio/typedoc-plugin-sourcefile-url/issues",
